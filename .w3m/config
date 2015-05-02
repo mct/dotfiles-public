@@ -1,0 +1,94 @@
+# user_agent Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRC1) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
+cookie_accept_domains 
+cookie_reject_domains 
+accept_bad_cookie 0
+accept_cookie 1
+use_cookie 1
+ssl_ca_file 
+ssl_ca_path 
+ssl_key_file 
+ssl_cert_file 
+ssl_verify_server 0
+ssl_forbid_method 
+no_cache 0
+noproxy_netaddr 1
+no_proxy 
+ftp_proxy 
+gopher_proxy 
+http_proxy 
+dns_order 0
+meta_refresh 1
+follow_redirection 10
+default_url 1
+retry_http 1
+argv_is_url 1
+accept_media text/*, image/*, application/*, audio/*, video/*
+accept_encoding gzip, compress, bzip, bzip2, deflate
+accept_language en; q=1.0
+no_referer 0
+ftppass_hostnamegen 0
+ftppasswd 
+use_lessopen 0
+bgextviewer 1
+extbrowser3 
+extbrowser2 
+extbrowser lynx
+mailer mailx
+editor vim -c ':set tw=74 noai nosi nosm nobk ruler ic bs=2 nobackup'
+urimethodmap ~/.w3m//urimethodmap, /etc/w3m/urimethodmap
+mailcap ~/.mailcap, /etc/mailcap
+mime_types ~/.mime.types, /etc/mime.types
+index_file 
+cgi_bin 
+personal_document_root 
+document_root 
+decode_cte 0
+clear_buffer 1
+reverse_mouse 0
+use_mouse 1
+migemo_command migemo -t egrep /usr/share/migemo/migemo-dict
+use_migemo 1
+ignorecase_search 1
+wrap_search 0
+vi_prec_num 1
+emacs_like_lineedit 1
+mark 1
+confirm_qq 1
+save_hist 1
+history 100
+pagerline 10000
+#visited_color magenta
+visited_anchor 0
+#active_color cyan
+active_style 0
+#bg_color terminal
+#mark_color cyan
+#form_color red
+#image_color green
+#anchor_color yellow
+#basic_color terminal
+color 1
+nextpage_topline 0
+label_topline 0
+show_srch_str 1
+show_lnum 0
+imgsize w3mimgsize
+imgdisplay w3mimgdisplay
+image_scale 100
+ext_image_viewer 1
+max_load_image 4
+auto_image 1
+display_image 1
+view_unseenobject 1
+ignore_null_img_alt 1
+fold_textarea 0
+alt_entity 0
+multicol 0
+dirlist_cmd file:///$LIB/dirlist.cgi
+ext_dirlist 1
+display_link 0
+target_self 0
+frame 0
+pixel_per_line 14
+pixel_per_char 7
+tabstop 8

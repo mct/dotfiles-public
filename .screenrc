@@ -1,0 +1,56 @@
+startup_message off
+shell -$SHELL
+autodetach on
+nethack on
+vbell off
+deflogin off
+bufferfile /home/mct/.buf
+#defscrollback 4098
+defscrollback 20480
+msgwait 2
+escape ^jj
+defescape ^jj
+
+# hardstatus alwayslastline %w
+
+#bind = resize =
+#bind + resize +1
+#bind - resize -1
+#bind _ resize 
+#bind j focus down
+#bind k focus up
+#bind K kill
+
+termcapinfo xterm 'vb@'
+
+# backtick id lifespan autorefresh cmd args...
+backtick 1 1 0 acpi
+
+# format of C-a t
+time "   %C:%s%a   %D %M %d, %Y "
+time "   %C%a   %D %M %d, %Y"
+time "   %C%a   %D %M %d, %Y   %1`   "
+
+
+# An experiment.  Thu Oct  2 18:21:16 PDT 2014
+#hardstatus alwayslastline
+#hardstatus string "%{= KW}%{= Kw}%{-} %-w%{= bW}%n%f %t%{-}%+w %=%C%a "
+#bind w
+#bind ^w
+
+# hardstatus [on|off]
+# hardstatus [always]lastline|message|ignore [string]
+# hardstatus string [string]
+
+# hardstatus on
+# hardstatus off
+# hardstatus lastline
+# hardstatus alwayslastline
+# hardstatus message
+
+bind W eval 'bind w windows' 'bind ^w windows' 'hardstatus off'              'hardstatus message' 'hardstatus string ""'
+bind E eval 'bind w'         'bind ^w'         'hardstatus alwayslastline'   'hardstatus string "%{= KW}%{= Kw}%{-} %-w%{= bW}%n%f %t%{-}%+w %=%C%a "'
+
+register E ^jE
+register W ^jW
+process E

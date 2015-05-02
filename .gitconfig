@@ -1,0 +1,42 @@
+[user]  
+        name = Michael C. Toren
+        email = mct@toren.net
+
+[core]
+	#autocrlf = input
+	#safecrlf = true
+	pager = less -R --quit-if-one-screen -M
+
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+
+[alias]
+	diff = diff --minimal
+	hist     = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color=auto --date-order
+	histdate = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color=auto
+	id = log --pretty=format:%h -1
+	co = checkout
+	ci = commit
+	type = cat-file -t
+	cat = cat-file -p
+	dirname = rev-parse --show-toplevel
+
+[push]
+	# Only push up the current branch, and only if it's already being tracked
+	#default = tracking
+	# https://thalif.wordpress.com/2010/04/10/git-push-default-warnings/
+	default = tracking
+
+[branch]
+	# ``tells git-branch and git-checkout to setup new branches so that
+	# git-pull(1) will appropriately merge from that remote branch.
+	# Recommended.  Without this, you will have to add --track to your
+	# branch command or manually merge remote tracking branches with
+	# "fetch" and then "merge".''
+	autosetupmerge = true
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/

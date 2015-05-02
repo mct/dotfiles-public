@@ -1,0 +1,16 @@
+keymap c-e UP
+keymap c-y DOWN
+keymap 0   LINE_BEGIN
+keymap C-f NEXT_PAGE
+keymap C-b PREV_PAGE
+keymap b PREV_WORD
+
+#keymap B BACK
+keymap B PREV
+keymap F NEXT
+keymap c-t SELECT_MENU
+
+keymap f FRAME
+
+# reload config
+keymap M-r REINIT

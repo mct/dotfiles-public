@@ -1,0 +1,15 @@
+#line-edit
+# Allow C-p and C-n to scroll through the search history
+^P up
+^N down
+
+#env
+
+# -M	--LONG-PROMPT		Use a very long prompt
+# -z-2	--window=-2		Sets context when scrolling
+# -j5	--jump-target=5		Sets context when searching
+# -a	--search-skip-screen	For "n", don't include current screen as match candidates
+# -i	--ignore-case		Ignore case when searching
+LESS = --LONG-PROMPT --window=-2 --jump-target=5 --search-skip-screen --ignore-case
+
+#LESSCHARSET=ascii

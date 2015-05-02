@@ -1,0 +1,100 @@
+--blank-lines-after-declarations	// -bad   (Put a blank line after variable declaractions)
+--blank-lines-after-procedures		// -bap   (Put a blank line after each function)
+//--leave-optional-blank-lines		// -nsob  (Pass through unmodified any extra blank lines that were in the input file)
+
+--braces-on-if-line			// -br    (Put the opening "{" on the same line as the if, for K&R style)
+--dont-cuddle-else                   // -nce   (When used with the above, use cuddled elses ("} else {")
+--cuddle-do-while                    // -cdw   (With a "do {", cuddle the while, as in "} while ();"
+
+//--braces-after-if-line			// -bl	  (Put the opening "{" on the following line, for BSD-style)
+--brace-indent0				// -bli	  (How many spaces is a "{" indented, for GNU-style)
+
+--indent-level4
+--line-length79
+--no-space-after-casts
+--no-space-after-function-call-names
+--no-tabs
+--dont-break-procedure-type
+--format-all-comments
+--comment-line-length79
+--format-first-column-comments
+
+/*
+            --blank-lines-after-commas                      -bc
+            --blank-lines-after-declarations                -bad
+            --blank-lines-after-procedures                  -bap
+            --blank-lines-before-block-comments             -bbb
+            --braces-after-if-line                          -bl
+            --brace-indent                                  -bli
+            --braces-after-struct-decl-line                 -bls
+            --braces-on-struct-decl-line                    -brs
+            --break-after-boolean-operator                  -nbbo
+            --break-before-boolean-operator                 -bbo
+            --break-function-decl-args                      -bfda
+            --break-function-decl-args-end                  -bfde
+            --case-indentation                              -clin
+            --case-brace-indentation                        -cbin
+            --comment-delimiters-on-blank-lines             -cdb
+            --comment-indentation                           -cn
+            --continuation-indentation                      -cin
+            --continue-at-parentheses                       -lp
+            --cuddle-else                                   -ce
+            --declaration-comment-column                    -cdn
+            --declaration-indentation                       -din
+            --dont-break-function-decl-args                 -nbfda
+            --dont-break-function-decl-args-end             -nbfde
+            --dont-break-procedure-type                     -npsl
+            --dont-cuddle-do-while                          -ncdw
+            --dont-format-comments                          -nfca
+            --dont-format-first-column-comments             -nfc1
+            --dont-line-up-parentheses                      -nlp
+            --dont-space-special-semicolon                  -nss
+            --dont-star-comments                            -nsc
+            --else-endif-column                             -cpn
+            --format-all-comments                           -fca
+            --format-first-column-comments                  -fc1
+            --gnu-style                                     -gnu
+            --honour-newlines                               -hnl
+            --ignore-newlines                               -nhnl
+            --ignore-profile                                -npro
+            --indent-level                                  -in
+            --k-and-r-style                                 -kr
+            --leave-optional-blank-lines                    -nsob
+            --leave-preprocessor-space                      -lps
+            --line-comments-indentation                     -dn
+            --line-length                                   -ln
+            --no-blank-lines-after-commas                   -nbc
+            --no-blank-lines-after-declarations             -nbad
+            --no-blank-lines-after-procedures               -nbap
+            --no-blank-lines-before-block-comments          -nbbb
+            --no-comment-delimiters-on-blank-lines          -ncdb
+            --no-space-after-casts                          -ncs
+            --no-parameter-indentation                      -nip
+            --no-space-after-for                    	    -nsaf
+            --no-space-after-function-call-names            -npcs
+            --no-space-after-if                             -nsai
+            --no-space-after-parentheses                    -nprs
+            --no-space-after-while                          -nsaw
+            --no-tabs                                       -nut
+            --no-verbosity                                  -nv
+            --original                                      -orig
+            --parameter-indentation                         -ipn
+            --paren-indentation                             -pin
+            --preserve-mtime                                -pmt
+            --procnames-start-lines                         -psl
+            --space-after-cast                              -cs
+            --space-after-for                               -saf
+            --space-after-if                                -sai
+            --space-after-parentheses                       -prs
+            --space-after-procedure-calls                   -pcs
+            --space-after-while                             -saw
+            --space-special-semicolon                       -ss
+            --standard-output                               -st
+            --start-left-side-of-comments                   -sc
+            --struct-brace-indentation                      -sbin
+            --swallow-optional-blank-lines                  -sob
+            --tab-size                                      -tsn
+            --use-tabs                                      -ut
+            --verbose                                       -v
+
+*/
