@@ -37,8 +37,8 @@ screen -ls
 #fi
 #echo
 
-# echo "Lease expires in:  $(datediff 8/31)"
-# echo
+echo "Lease expires in:  $(datediff 8/31)"
+echo
 
 #vim-r;echo
 

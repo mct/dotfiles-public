@@ -118,6 +118,7 @@ alias rehash="hash -r"
 alias shred="shred -v -u -z"
 alias mplayer='mplayer -ao alsa'
 alias m="mplayer -fs"
+alias m='fetchmail; tail -n0 -F /var/log/mail.log'
 alias off="gnome-screensaver-command -l; xset dpms force off"
 alias zzz="dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias NetworkManageManager=nm-connection-editor
