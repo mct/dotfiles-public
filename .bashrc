@@ -142,13 +142,10 @@ alias units="units -v1"
 #alias pi='echo "scale=10; 4*a(1)" | bc -l'
 alias pi='echo "4*a(1)" | bc -l'
 alias spf="host -t txt"
+alias d=dict
 
 tag () { 
     vim "+:tag $*"
-}
-
-d() {
-    dict "$@" | less --quit-if-one-screen
 }
 
 crypt() { perl -e 'print crypt("'$1'", "'$2'"||"aa"), "\n"'; }
