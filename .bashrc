@@ -153,10 +153,10 @@ title() { echo -ne "\033]0;${*:-$(hostname | cut -d. -f1) ($(tty | sed s/^.dev./
 title() { echo -ne "\033]0;${*:-$(hostname | cut -d. -f1) }\007"; }
 
 bigboard() {
-	echo 'You whisper, "bigbord", and a display is presented before you...'
-	echo
-	w | sort
-	echo
+    echo 'You whisper, "bigbord", and a display is presented before you...'
+    echo
+    w | sort
+    echo
 }
 
 gt() {(
@@ -169,7 +169,7 @@ gt() {(
 )}
 
 google() {(
-	URL="http://www.google.com/search?q=$*"
+    URL="http://www.google.com/search?q=$*"
     URL=$(echo "$URL" | sed 's/ /%20/g')
     w3m $URL
 )}
@@ -180,12 +180,12 @@ ns() { host -t ns $* | sort -n; }
 
 domain()
 {
-	for i in $*; do for j in $(echo $i | cut -d. -f1).{com,net,org}; do
-		#o=$(dig $j ns +pfmin +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
-		o=$(dig $j ns +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
-		test $o -eq 0 && echo "$j: NO DNS!"
-		echo
-	done; done
+    for i in $*; do for j in $(echo $i | cut -d. -f1).{com,net,org}; do
+        #o=$(dig $j ns +pfmin +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
+        o=$(dig $j ns +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
+        test $o -eq 0 && echo "$j: NO DNS!"
+        echo
+    done; done
 }
 
 mx() {(
