@@ -1,3 +1,8 @@
-My public dotfiles.  I symlink most of these from my home directory.
+My public dotfiles.  I symlink most of these from my home directory on every
+machine I use regularly.
+
+The INSTALL script seems to work, but is obtuse and scary.  I can argue to
+myself that there are legitimate reasons, at least enough to let me sleep at
+night, but I won't hold it against you if you disagree.
 
 Commit messages here are extremely terse, as it is mostly used only by me.
