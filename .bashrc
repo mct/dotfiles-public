@@ -3,6 +3,9 @@
 
 export LC_COLLATE=C
 
+export GOROOT=~/golang
+export GOPATH=~/go
+
 export PATH="/home/mct/bin"
 PATH="$PATH:/home/mct/junkdrawer/bin"
 PATH="$PATH:/usr/local/bin"
@@ -16,9 +19,6 @@ PATH="$PATH:/usr/games"
 PATH="$PATH:/home/mct/.local/bin"
 PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
-
-export GOROOT=~/golang
-export GOPATH=~/go
 
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s,bin/java,,")
 
