@@ -143,6 +143,7 @@ alias units="units -v1"
 alias pi='echo "4*a(1)" | bc -l'
 alias spf="host -t txt"
 alias d=dict
+alias jf="systemd-journalctl -f"
 
 tag () { 
     vim "+:tag $*"
