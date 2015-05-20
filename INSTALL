@@ -15,7 +15,7 @@ use warnings;
 
 my $home = glob("~/");  # $ENV{HOME}
 my $mydir = abs_path(dirname $0) . "/";
-my $movedir = "$mydir/moved";
+my $backupdir = "$mydir/backup";
 
 # Remove the common prefix of $home from $dir.  This is tricky, and relies on
 # abs_path() above working.  It may very well have bugs.  Common prefix code
@@ -27,18 +27,19 @@ $linktarget =~ s/\/$//;
 
 my @files = sort
             grep { $_ ne ".git" }
+            grep { $_ ne ".gitignore" }
             grep { ! m/\.sw[a-z]$/ }    # vim swap files
             grep { ! m/^\.oui-/ }
             map { basename $_ } glob("$mydir/.??*");
 
--d $movedir and die "$movedir must be removed before continuing\n";
-mkdir $movedir or die "mkdir: $movedir: $!";
+-d $backupdir and die "$backupdir must be removed before continuing\n";
+mkdir $backupdir or die "mkdir: $backupdir: $!";
 
 chdir $home or die;
 
 for my $i (@files) {
     if (-e $i) {
-        rename $i, "$movedir/$i" or die "rename: $i: $!";
+        rename $i, "$backupdir/$i" or die "rename: $i: $!";
     }
     symlink "$linktarget/$i", $i or die "symlink: $i: $!";
 }
