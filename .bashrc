@@ -144,6 +144,7 @@ alias pi='echo "4*a(1)" | bc -l'
 alias spf="host -t txt"
 alias d=dict
 alias jf="systemd-journalctl -f"
+alias unicode="unicode --color=yes --max=0"
 
 tag () { 
     vim "+:tag $*"
