@@ -1,4 +1,5 @@
 # ~/.bash_profile: executed by bash(1) for login shells.
+# vim:set ts=4 sw=4 ai et:
 
 test -f ~mct/.bashrc && source ~mct/.bashrc
 
@@ -37,8 +38,11 @@ screen -ls
 #fi
 #echo
 
-echo "Lease expires in:  $(datediff 8/31)"
-echo
+if test "$HOSTNAME" = "alcatraz"
+then
+    echo "Lease expires in:  $(datediff 8/31)"
+    echo
+fi
 
 #vim-r;echo
 
