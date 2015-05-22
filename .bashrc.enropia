@@ -2,4 +2,3 @@
 export QMAILUSER=mct
 export QMAILHOST=toren.net
 export QMAILNAME="Michael C. Toren"
-export MAILCHECK=-1

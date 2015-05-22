@@ -22,7 +22,8 @@ PATH="$PATH:$GOPATH/bin"
 
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s,bin/java,,")
 
-export MAIL=/var/spool/mail/mct
+#export MAIL=/var/spool/mail/mct  # use the system default
+export MAILCHECK=-1
 export LD_LIBRARY_PATH=/home/mct/.local/lib
 #export LD_RUN_PATH=/home/mct/.local/lib
 export BOOST_ROOT=/home/mct/shared/boost_1_54_0
