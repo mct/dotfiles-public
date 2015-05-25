@@ -139,6 +139,7 @@ alias spf="host -t txt"
 alias d=dict
 alias jf="systemd-journalctl -f"
 alias unicode="unicode --color=yes --max=0"
+alias resize='kill -WINCH $$'
 
 tag () { 
     vim "+:tag $*"
