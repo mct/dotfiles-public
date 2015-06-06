@@ -246,8 +246,12 @@ trackers() {
 
 ##
 
-for i in dotfiles-public dotfiles-private dotfiles
+for i in \
+    ~/dotfiles-public/.bashrc.$HOSTNAME     \
+    ~/dotfiles-private/.bashrc              \
+    ~/dotfiles-private/.bashrc.$HOSTNAME    \
+    ~/.bashrc.$HOSTNAME                     \
+;
 do
-    i=/home/mct/$i/.bashrc.$HOSTNAME
     test -f $i && source $i
 done
