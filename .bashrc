@@ -241,7 +241,7 @@ k9rm() {(
 trackers() {
     while read line
     do echo $line; echo
-    done < /home/mct/todo/gtd/notes/trackers
+    done < /home/mct/todo/gtd/notes/trackers | xsel --input --clipboard
 }
 
 ##
