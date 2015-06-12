@@ -140,6 +140,7 @@ alias d=dict
 alias jf="systemd-journalctl -f"
 alias unicode="unicode --color=yes --max=0"
 alias resize='kill -WINCH $$'
+alias screenshot="gnome-screenshot  --delay 1 --remove-border --window"
 
 tag () { 
     vim "+:tag $*"
