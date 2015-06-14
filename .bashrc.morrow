@@ -1,1 +1,2 @@
 alias m="mplayer -fs"
+alias mute="amixer set Master toggle"
