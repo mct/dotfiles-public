@@ -23,6 +23,7 @@
 	type = cat-file -t
 	cat = cat-file -p
 	dirname = rev-parse --show-toplevel
+	rem = remote -v
 
 [push]
 	# Only push up the current branch, and only if it's already being tracked
