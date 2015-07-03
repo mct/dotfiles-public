@@ -1,4 +1,6 @@
-" vim:set nowrap:
+" January 2003 (or sometime thereabouts), Michael C. Toren <mct@toren.net>
+" Originally based on a version by Bill Jonas <bill@billjonas.com>,
+" which was in turn based on gzip.vim by Bram Moolenaar <Bram@vim.org>
 
 if has("autocmd")
 augroup gnupg
