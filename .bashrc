@@ -245,6 +245,11 @@ trackers() {
     done < /home/mct/todo/gtd/notes/trackers | xsel --input --clipboard
 }
 
+update() {(
+    set -x
+    sudo aptitude update && sudo aptitude dist-upgrade
+)}
+
 ##
 
 for i in \
