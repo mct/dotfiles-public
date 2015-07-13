@@ -9,6 +9,10 @@ alias soma-restart="sudo soma-restart"
 alias schedulecheck="soma-scheduler -n --start 'echo t' --stop 'echo nil'"
 alias status="head -v /etc/cron.d/soma | grep -C10 soma-scheduler ; echo; systemctl -a | grep -i soma"
 
+amps() {
+    tail /var/log/daemon.log | perl -lne '/^(... .. ..:..:..) .* (Amps: [\d.]*)/ && print "$1   $2"'
+}
+
 check() {
     ls -1tr /var/log/daemon.log*  | tail -2 | xargs zcat -f \
         | grep frames/second | tail
