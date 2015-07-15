@@ -38,11 +38,15 @@ screen -ls
 #fi
 #echo
 
-if test "$HOSTNAME" = "alcatraz"
-then
-    echo "Lease expires in:  $(datediff 8/31)"
-    echo
-fi
+for i in \
+    ~/dotfiles-public/.profile.$HOSTNAME     \
+    ~/dotfiles-private/.profile              \
+    ~/dotfiles-private/.profile.$HOSTNAME    \
+    ~/.profile.$HOSTNAME                     \
+;
+do
+    test -f $i && source $i
+done
 
 #vim-r;echo
 
