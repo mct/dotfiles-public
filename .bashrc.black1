@@ -9,8 +9,12 @@ alias soma-restart="sudo soma-restart"
 alias schedulecheck="soma-scheduler -n --start 'echo t' --stop 'echo nil'"
 alias status="head -v /etc/cron.d/soma | grep -C10 soma-scheduler ; echo; systemctl -a | grep -i soma"
 
+alias ac='curl  --netrc -s --fail --connect-timeout 5 --max-time 5 http://power/index.htm | w3m -T text/html -dump | grep Sculpture | f 2,3,4'
+alias on='curl  --netrc -s --fail --connect-timeout 5 --max-time 5 -o /dev/null http://power/outlet?4=ON  ; ac'
+alias off='curl --netrc -s --fail --connect-timeout 5 --max-time 5 -o /dev/null http://power/outlet?4=OFF ; ac'
+
 amps() {
-    tail /var/log/daemon.log | perl -lne '/^(... .. ..:..:..) .* (Amps: [\d.]*)/ && print "$1   $2"'
+    tail "$@" /var/log/daemon.log | perl -lne '/^(... .. ..:..:..) .* (Amps: [\d.]*)/ && print "$1   $2"'
 }
 
 check() {
