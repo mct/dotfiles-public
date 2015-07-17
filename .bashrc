@@ -217,9 +217,14 @@ lastmail() {(
             && exec mutt -f ~/mail/lastmail.tmp
 )}
 
+x509() {(
+    openssl x509 -text "$@" | less --quit-if-one-screen
+)}
+alias 509=x509
+
 ssl() {(
-    host="$1"
-    port="$2"
+    host="$1"; shift
+    port="$1"; shift
 
     if [ -z "$host" -o -z "$port" ]
     then
@@ -227,7 +232,21 @@ ssl() {(
         exit -1
     fi
 
-    openssl s_client -connect "$host:$port"
+    openssl s_client -connect "$host:$port" "$@"
+)}
+
+getcert() {(
+    host="$1"; shift
+    port="$1"; shift
+
+    if [ -z "$host" -o -z "$port" ]
+    then
+        echo "Usage: getcert <host> <port>"
+        exit -1
+    fi
+
+    openssl s_client -connect "$host:$port" "$@" < /dev/null 2>&1 \
+        | sed -n -e '/---BEGIN CERTIFICATE---/,/---END CERTIFICATE---/p'
 )}
 
 k9rm() {(
