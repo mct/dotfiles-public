@@ -30,6 +30,8 @@ my @files = sort
             grep { $_ ne ".gitignore" }
             grep { ! m/\.sw[a-z]$/ }    # vim swap files
             grep { ! m/^\.oui-/ }
+            grep { ! m/^\.bashrc\./ }   # host specific bash rc files
+            grep { ! m/^\.profile\./ }  # host specific bash profiles
             map { basename $_ } glob("$mydir/.??*");
 
 -d $backupdir and die "$backupdir must be removed before continuing\n";
