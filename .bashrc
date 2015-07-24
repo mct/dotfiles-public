@@ -8,6 +8,7 @@ export GOPATH=~/go
 
 export PATH="/home/mct/bin"
 PATH="$PATH:/home/mct/junkdrawer/bin"
+PATH="$PATH:/home/mct/junkdrawer/queue"
 PATH="$PATH:/usr/local/bin"
 PATH="$PATH:/usr/local/sbin"
 PATH="$PATH:/usr/bin"
