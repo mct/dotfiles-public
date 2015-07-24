@@ -270,6 +270,19 @@ update() {(
     sudo aptitude update && sudo aptitude dist-upgrade
 )}
 
+# For setting the vim background to light or dark, depending on what my mood
+# is, and what background color I've selected for my terminal.  I really wish
+# there was a way to query my terminal for its current background color using
+# an ANSI query or something.
+
+light() {
+    echo set background=light > ~/.vim/vimrc-background
+}
+dark() {
+    echo set background=dark > ~/.vim/vimrc-background
+}
+
+
 ##
 
 for i in \

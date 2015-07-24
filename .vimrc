@@ -457,5 +457,4 @@ endfunction
 command W    :call WriteSudo()
 command Sudo :call WriteSudo()
 
-set background=dark
-set background=light
+source ~/.vim/vimrc-background
