@@ -251,7 +251,7 @@ getcert() {(
 )}
 
 k9rm() {(
-    for dir in $(find /home/android/Maildir/ -name cur -o -name new -o -name tmp | grep -vw Drafts)
+    for dir in $(find /home/android/Maildir/ -name cur -o -name new -o -name tmp | grep -vw -e Drafts -e .Notes)
     do
         for file in $dir/*
         do rm -fv $file
