@@ -42,6 +42,8 @@ HISTCONTROL=ignoreboth
 HOSTFILE=~/.hosts
 export BC_ENV_ARGS="-q"
 
+export PYTHONDONTWRITEBYTECODE=1
+
 #export PERL5LIB=/usr/local/pkg/nuvexport-0.3/share/nuvexport
 
 #export AWS_AUTO_SCALING_HOME=/home/mct/cf/software/aws/autoscaling
