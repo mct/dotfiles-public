@@ -49,7 +49,7 @@ time "   %C%a   %D %M %d, %Y   %1`   "
 # hardstatus message
 
 bind W eval 'bind w windows' 'bind ^w windows' 'hardstatus off'              'hardstatus message' 'hardstatus string ""'
-bind E eval 'bind w'         'bind ^w'         'hardstatus alwayslastline'   'hardstatus string "%{= KW}%{= Kw}%{-} %-w%{= bW}%n%f %t%{-}%+w %=%C%a "'
+bind E eval 'bind w'         'bind ^w'         'hardstatus alwayslastline'   'hardstatus string "%{= KW}%{= Kw}%{-} %-w%{= bW}%n%f %t%{-}%+w %=%H %C%a "'
 
 register E ^jE
 register W ^jW
