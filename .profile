@@ -1,7 +1,7 @@
 # ~/.bash_profile: executed by bash(1) for login shells.
 # vim:set ts=4 sw=4 ai et:
 
-test -f ~mct/.bashrc && source ~mct/.bashrc
+test -f ~/.bashrc && source ~/.bashrc
 
 stty -ixon
 stty flush ^O
@@ -25,7 +25,7 @@ bigboard
 #pom; echo
 screen -ls
 
-#test -f ~mct/.agent && . ~mct/.agent
+#test -f ~/.agent && . ~/.agent
 #if [ -n "$SSH_AGENT_PID" ] && \
 #   [ -f /proc/$SSH_AGENT_PID/cmdline ] && \
 #   grep -qa ^ssh-agent /proc/$SSH_AGENT_PID/cmdline
@@ -33,8 +33,8 @@ screen -ls
 #        echo Agent pid $SSH_AGENT_PID already running
 #else
 #        eval $(ssh-agent)
-#        echo "export SSH_AGENT_PID=\"$SSH_AGENT_PID\""  > ~mct/.agent
-#        echo "export SSH_AUTH_SOCK=\"$SSH_AUTH_SOCK\"" >> ~mct/.agent
+#        echo "export SSH_AGENT_PID=\"$SSH_AGENT_PID\""  > ~/.agent
+#        echo "export SSH_AUTH_SOCK=\"$SSH_AUTH_SOCK\"" >> ~/.agent
 #fi
 #echo
 

@@ -6,9 +6,9 @@ export LC_COLLATE=C
 export GOROOT=~/golang
 export GOPATH=~/go
 
-export PATH="/home/mct/bin"
-PATH="$PATH:/home/mct/junkdrawer/bin"
-PATH="$PATH:/home/mct/junkdrawer/queue"
+export PATH="~/bin"
+PATH="$PATH:~/junkdrawer/bin"
+PATH="$PATH:~/junkdrawer/queue"
 PATH="$PATH:/usr/local/bin"
 PATH="$PATH:/usr/local/sbin"
 PATH="$PATH:/usr/bin"
@@ -17,7 +17,7 @@ PATH="$PATH:/bin"
 PATH="$PATH:/sbin"
 PATH="$PATH:/usr/local/games"
 PATH="$PATH:/usr/games"
-PATH="$PATH:/home/mct/.local/bin"
+PATH="$PATH:~/.local/bin"
 PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 
@@ -25,9 +25,9 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s,bin/java,,")
 
 #export MAIL=/var/spool/mail/mct  # use the system default
 export MAILCHECK=-1
-export LD_LIBRARY_PATH=/home/mct/.local/lib
-#export LD_RUN_PATH=/home/mct/.local/lib
-export BOOST_ROOT=/home/mct/shared/boost_1_54_0
+export LD_LIBRARY_PATH=~/.local/lib
+#export LD_RUN_PATH=~/.local/lib
+export BOOST_ROOT=~/shared/boost_1_54_0
 
 export EDITOR="vim"
 export PAGER=less
@@ -46,14 +46,14 @@ export PYTHONDONTWRITEBYTECODE=1
 
 #export PERL5LIB=/usr/local/pkg/nuvexport-0.3/share/nuvexport
 
-#export AWS_AUTO_SCALING_HOME=/home/mct/cf/software/aws/autoscaling
-#export AWS_CREDENTIAL_FILE=/home/mct/cf/software/aws/etc/credential_file
-#export AWS_ELB_HOME=/home/mct/cf/software/aws/elasticloadbalancing
-#export AWS_IAM_HOME=/home/mct/cf/software/aws/iam
-#export AWSSECRET=/home/mct/cf/software/aws/etc/awssecret
-#export PATH=/home/mct/aws:$PATH
+#export AWS_AUTO_SCALING_HOME=~/cf/software/aws/autoscaling
+#export AWS_CREDENTIAL_FILE=~/cf/software/aws/etc/credential_file
+#export AWS_ELB_HOME=~/cf/software/aws/elasticloadbalancing
+#export AWS_IAM_HOME=~/cf/software/aws/iam
+#export AWSSECRET=~/cf/software/aws/etc/awssecret
+#export PATH=~/aws:$PATH
 ##
-## export EC2_HOME=/home/mct/amazon/ec2-api-tools-1.5.5.0
+## export EC2_HOME=~/amazon/ec2-api-tools-1.5.5.0
 ## export AWS_AUTO_SCALING_HOME=~/git/cf/software/aws/autoscaling
 ##
 ## export AWS_AUTO_SCALING_HOME=~/git/cf/software/aws/autoscaling
@@ -65,18 +65,18 @@ export PYTHONDONTWRITEBYTECODE=1
 ## export PATH=$PATH:~/git/cf/software/aws/elasticloadbalancing/bin
 ## export PATH=$PATH:~/git/cf/software/aws/iam/bin
 ##
-## export EC2_CERT=/home/mct/certs/cert.pem
-## export EC2_PRIVATE_KEY=/home/mct/certs/mct.pem
+## export EC2_CERT=~/certs/cert.pem
+## export EC2_PRIVATE_KEY=~/certs/mct.pem
 ## export PATH=$PATH:~/amazon/ec2-api-tools-1.5.5.0/bin
 ##
-## export EC2_AMITOOL_HOME=/home/mct/amazon/ec2-ami-tools-1.4.0.7
+## export EC2_AMITOOL_HOME=~/amazon/ec2-ami-tools-1.4.0.7
 ## export PATH=$PATH:~/amazon/ec2-ami-tools-1.4.0.7/bin
 ##
 ## #. ~/git/bash-completion-knife/knife
 ##
 ## # hadoop fs -ls /
 ## export HADOOP_HOME=~/analytics/hadoop-0.20.2-cdh3u1
-## export PATH=$PATH:/home/mct/analytics/hadoop-0.20.2-cdh3u1/bin
+## export PATH=$PATH:~/analytics/hadoop-0.20.2-cdh3u1/bin
 ##
 ## for i in ls lsr df du dus get cat
 ## do alias h$i="hadoop fs -$i"
@@ -84,9 +84,9 @@ export PYTHONDONTWRITEBYTECODE=1
 ##
 ##
 ## export PYTHONPATH=/opt/stats/lib/python:/opt/stats/modules/logfile_db
-## export PATH=$PATH:/home/mct/analytics/bin
+## export PATH=$PATH:~/analytics/bin
 
-alias 1="vim /home/mct/todo/gtd/next/onesheet"
+alias 1="vim ~/todo/gtd/next/onesheet"
 alias xanadu=eval\ "vim \"-c ':set tw=74 ai nosi nosm nobk ruler ic bs=2 nobackup'\" ~/todo/xanadu/\$(date +%Y%m%d).gpg"
 alias grep="grep --color=auto"
 alias ls="ls -AF --color=auto --group-directories-first"
@@ -264,7 +264,7 @@ k9rm() {(
 trackers() {
     while read line
     do echo $line; echo
-    done < /home/mct/todo/gtd/notes/trackers | xsel --input --clipboard
+    done < ~/todo/gtd/notes/trackers | xsel --input --clipboard
 }
 
 update() {(

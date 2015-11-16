@@ -4,7 +4,7 @@ autodetach on
 nethack on
 vbell off
 deflogin off
-bufferfile /home/mct/.buf
+bufferfile $HOME/.buf
 #defscrollback 4098
 defscrollback 20480
 msgwait 2
