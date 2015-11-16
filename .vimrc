@@ -34,41 +34,6 @@ set laststatus=2
 set keywordprg=dict "\ -P-
 "set keywordprg=git\ show "\ -P-
 
-"" Because I'm too used to emacs, make C-w O move me to the "other" window.
-""map <c-w>o	<c-w><c-w>
-""map <c-w>O	<c-w><c-w>
-""map <c-w><c-o>	<c-w><c-w>
-"map <c-w><c-l>	:ls<c-m>
-"map <c-w>1	:buffer 1<c-m>
-"map <c-w>2	:buffer 2<c-m>
-"map <c-w>3	:buffer 3<c-m>
-"map <c-w>4	:buffer 4<c-m>
-"map <c-w>5	:buffer 5<c-m>
-"map <c-w>6	:buffer 6<c-m>
-"map <c-w>7	:buffer 7<c-m>
-"map <c-w>8	:buffer 8<c-m>
-"map <c-w>9	:buffer 9<c-m>
-
-" these don't work for some reason:
-"map <M-1> :buffer 1<c-m>
-"map <M-2> :buffer 2<c-m>
-"map <M-3> :buffer 3<c-m>
-"map <M-4> :buffer 4<c-m>
-"map <M-5> :buffer 5<c-m>
-"map <M-6> :buffer 6<c-m>
-"map <M-7> :buffer 7<c-m>
-"map <M-8> :buffer 8<c-m>
-"map <M-9> :buffer 9<c-m>
-"map <c-1> :buffer 1<c-m>
-"map <c-2> :buffer 2<c-m>
-"map <c-3> :buffer 3<c-m>
-"map <c-4> :buffer 4<c-m>
-"map <c-5> :buffer 5<c-m>
-"map <c-6> :buffer 6<c-m>
-"map <c-7> :buffer 7<c-m>
-"map <c-8> :buffer 8<c-m>
-"map <c-9> :buffer 9<c-m>
-
 " With Vim-4 the format command was just 'Q' and
 " I am too used to it, so I need this back!
 nnoremap Q gq
@@ -417,7 +382,6 @@ set foldtext=SomeFoldText()
 ":endfunction
 ":set foldtext=FoldTextIndent()
 
-
 "filetype plugin indent on
 
 set nofsync swapsync=
@@ -441,20 +405,5 @@ cnoremap <Esc>f           <S-Right>
 cnoremap <Esc><Backspace> <C-w>
 " missing: <C-k>
 " help fixdel
-
-"cmap <C-p> <Up>
-"cmap <C-n> <Down>
-"cnoremap <C-h> <BS>
-"cnoremap <C-k> <C-f>D<C-c><C-c>:<Up>
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-"cmap w!! w !sudo tee > /dev/null %
-function! WriteSudo()
-    setlocal noreadonly
-    autocmd BufWriteCmd <buffer> silent w !sudo tee % > /dev/null
-    autocmd BufWriteCmd <buffer> setlocal nomodified
-endfunction
-command W    :call WriteSudo()
-command Sudo :call WriteSudo()
 
 source ~/.vim/vimrc-background

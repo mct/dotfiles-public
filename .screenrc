@@ -24,7 +24,8 @@ defescape ^jj
 termcapinfo xterm 'vb@'
 
 # backtick id lifespan autorefresh cmd args...
-backtick 1 1 0 acpi
+#backtick 1 1 1 acpi | sed 's/Battery//'
+backtick 1 1 1 acpi
 
 # format of C-a t
 time "   %C:%s%a   %D %M %d, %Y "
@@ -50,6 +51,9 @@ time "   %C%a   %D %M %d, %Y   %1`   "
 
 bind W eval 'bind w windows' 'bind ^w windows' 'hardstatus off'              'hardstatus message' 'hardstatus string ""'
 bind E eval 'bind w'         'bind ^w'         'hardstatus alwayslastline'   'hardstatus string "%{= KW}%{= Kw}%{-} %-w%{= bW}%n%f %t%{-}%+w %=%H %C%a "'
+
+# Seconds:
+bind E eval 'bind w'         'bind ^w'         'hardstatus alwayslastline'   'hardstatus string "%{= KW}%{= Kw}%{-} %-w%{= bW}%n%f %t%{-}%+w %=%H %C:%s "'
 
 register E ^jE
 register W ^jW
