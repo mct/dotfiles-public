@@ -114,8 +114,8 @@ autocmd FileType go setlocal ts=4 sw=4 ai expandtab smarttab softtabstop=4 synta
 autocmd BufNewFile,BufReadPost *.go set filetype=go
 
 " Arduino
-autocmd BufNewFile,BufReadPost *.pde set filetype=c
-autocmd BufNewFile,BufReadPost *.ino set filetype=c
+"autocmd BufNewFile,BufReadPost *.pde set filetype=c
+"autocmd BufNewFile,BufReadPost *.ino set filetype=c
 
 " c++, for utorrent.  Ideally, I'd only want this going off for *.{cpp,h,cpp} with "utorrent/" in their path
 autocmd FileType cpp setlocal ts=4 sw=4 ai nocindent

@@ -9,6 +9,7 @@ export GOPATH=~/go
 export PATH="~/bin"
 PATH="$PATH:~/junkdrawer/bin"
 PATH="$PATH:~/junkdrawer/queue"
+PATH="$PATH:~/.local/bin"
 PATH="$PATH:/usr/local/bin"
 PATH="$PATH:/usr/local/sbin"
 PATH="$PATH:/usr/bin"
@@ -17,7 +18,6 @@ PATH="$PATH:/bin"
 PATH="$PATH:/sbin"
 PATH="$PATH:/usr/local/games"
 PATH="$PATH:/usr/games"
-PATH="$PATH:~/.local/bin"
 PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 
@@ -43,6 +43,8 @@ HOSTFILE=~/.hosts
 export BC_ENV_ARGS="-q"
 
 export PYTHONDONTWRITEBYTECODE=1
+
+export GCC_COLORS=true
 
 #export PERL5LIB=/usr/local/pkg/nuvexport-0.3/share/nuvexport
 
@@ -114,7 +116,6 @@ alias ...="cd ../.."
 alias rehash="hash -r"
 alias shred="shred -v -u -z"
 alias mplayer='mplayer -ao alsa'
-alias m='fetchmail; tail -n0 -F /var/log/mail.log'
 alias off="gnome-screensaver-command -l; xset dpms force off"
 alias zzz="dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias NetworkManageManager=nm-connection-editor
@@ -124,7 +125,7 @@ alias weight="vim ~/todo/weight/mct +':$ r !date +\%m/\%d/\%Y\%t'"
 alias u="perl -le 'print scalar localtime \$_ for @ARGV'"
 alias uu="perl -le 'print scalar gmtime \$_ for @ARGV'"
 alias objdump="objdump -M intel"
-alias httpshare="python -m SimpleHTTPServer"
+alias httpshare="echo; ifconfig | grep -w inet | tr  : ' ' | awk '! / 127.0.0.1 / { print \$3 }' ; echo; python -m SimpleHTTPServer"
 alias vim-r="find ~  /tmp /var -name '.sw?' -o -name '.*.sw?' 2>/dev/null"
 alias s="stty -ctlecho"
 alias nl="nl -ba"
@@ -144,6 +145,11 @@ alias jf="systemd-journalctl -f"
 alias unicode="unicode --color=yes --max=0"
 alias resize='kill -WINCH $$'
 alias screenshot="gnome-screenshot  --delay 1 --remove-border --window"
+
+m() {
+    #set -x
+    fetchmail $@ && tail -n0 -F /var/log/mail.log
+}
 
 tag () { 
     vim "+:tag $*"
@@ -206,12 +212,6 @@ jdig() {(
         #echo
     done
 )}
-
-iwreset() {
-    sudo modprobe -r iwlwifi
-    sleep 1
-    sudo modprobe    iwlwifi
-}
 
 lastmail() {(
     tail -c ${1:-50}m ${2:-~/mail/archive} \

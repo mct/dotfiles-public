@@ -2,3 +2,4 @@
 hist_file = ~/.bpython/history
 hist_length = 1000
 color_scheme = default
+color_scheme = mct-light

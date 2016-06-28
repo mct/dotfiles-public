@@ -1,2 +1,11 @@
 alias m="mplayer -fs"
 alias mute="amixer set Master toggle"
+alias red="redshift -O 3700K" # overrides /bin/red, an ed implementation
+
+alias eth0="sudo dhclient -v -d eth0"
+
+iwreset() {
+    sudo modprobe -r iwldvm iwlwifi
+    sleep 1
+    sudo modprobe iwlwifi
+}
