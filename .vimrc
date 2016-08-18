@@ -1,6 +1,27 @@
-set nocompatible
+" vim:set ts=4 sw=4 ai et smarttab:
 
-" :set ts=4 sw=4 ai et smarttab
+set nocompatible
+function IsReply()
+	if line('$') > 1
+		silent :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
+		silent :%s/^>*\zs\s\+$//e
+	endif
+	setlocal tw=75
+    setlocal fo=tcqw
+    setlocal noai
+    setlocal nosmartindent
+    setlocal noshowmatch
+    setlocal nobackup
+    setlocal ruler
+    setlocal ic
+    setlocal bs=2
+    setlocal modelines=0
+endfunction
+
+"autocmd FileType mail setlocal tw=75 noai nosmartindent noshowmatch nobackup ruler ic bs=2 modelines=0 term=screen
+autocmd FileType mail call IsReply()
+
+syntax on
 
 "set tw=78		" autowrap the text to 78 characters
 "set ai			" autoindenting on
@@ -289,8 +310,6 @@ set viminfo=!,'20,<50,s10,h " was:   viminfo='100,<50,s10,h
 
 " http://stackoverflow.com/questions/526858/how-do-i-make-vim-do-normal-bash-like-tab-completion-for-file-names
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-
-autocmd FileType mail setlocal tw=75 noai nosmartindent noshowmatch nobackup ruler ic bs=2 modelines=0 term=screen
 
 :inoremap <Nul> <C-p>
 
