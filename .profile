@@ -43,6 +43,7 @@ for i in \
     ~/dotfiles-private/.profile              \
     ~/dotfiles-private/.profile.$HOSTNAME    \
     ~/.profile.$HOSTNAME                     \
+    ~/.profile.local                         \
 ;
 do
     test -f $i && source $i

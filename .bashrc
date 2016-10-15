@@ -21,7 +21,11 @@ PATH="$PATH:/usr/games"
 PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 
+# OSX readlink() behaves differently
+if test "$(uname)" != Darwin
+then
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s,bin/java,,")
+fi
 
 #export MAIL=/var/spool/mail/mct  # use the system default
 export MAILCHECK=-1
@@ -115,7 +119,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias rehash="hash -r"
 alias shred="shred -v -u -z"
-alias mplayer='mplayer -ao alsa'
+#alias mplayer='mplayer -ao alsa'
 alias off="gnome-screensaver-command -l; xset dpms force off"
 alias zzz="dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias NetworkManageManager=nm-connection-editor
@@ -311,6 +315,7 @@ for i in \
     ~/dotfiles-private/.bashrc              \
     ~/dotfiles-private/.bashrc.$HOSTNAME    \
     ~/.bashrc.$HOSTNAME                     \
+    ~/.bashrc.local                         \
 ;
 do
     test -f $i && source $i
