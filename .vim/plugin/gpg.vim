@@ -9,7 +9,7 @@ augroup gnupg
 
   autocmd BufReadPre,FileReadPre	*.gpg set bin noswapfile
   autocmd BufReadPre,FileReadPre	*.gpg let b:ch_save = &ch|set ch=2
-  autocmd BufReadPost,FileReadPost	*.gpg '[,']!gpg --decrypt 2>/dev/null
+  autocmd BufReadPost,FileReadPost	*.gpg '[,']!gpg --use-agent --decrypt 2>/dev/null
   autocmd BufReadPost,FileReadPost	*.gpg set nobin
   autocmd BufReadPost,FileReadPost	*.gpg let &ch = b:ch_save|unlet b:ch_save
   autocmd BufReadPost,FileReadPost	*.gpg execute ":doautocmd BufReadPost " . expand("%:r")
