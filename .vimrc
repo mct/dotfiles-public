@@ -425,4 +425,6 @@ cnoremap <Esc><Backspace> <C-w>
 " missing: <C-k>
 " help fixdel
 
+noremap gw :w !wc -w<c-m>
+
 source ~/.vim/vimrc-background
