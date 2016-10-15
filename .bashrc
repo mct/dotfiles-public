@@ -121,6 +121,7 @@ alias zzz="dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/f
 alias NetworkManageManager=nm-connection-editor
 alias open=xdg-open
 alias vim="vim -X"
+alias vimr="vim -r"
 alias weight="vim ~/todo/weight/mct +':$ r !date +\%m/\%d/\%Y\%t'"
 alias u="perl -le 'print scalar localtime \$_ for @ARGV'"
 alias uu="perl -le 'print scalar gmtime \$_ for @ARGV'"
@@ -176,11 +177,18 @@ gt() {(
 )}
 
 google() {(
-    URL="http://www.google.com/search?q=$*"
+    URL="http://www.google.com/search?q=$@"
     URL=$(echo "$URL" | sed 's/ /%20/g')
     w3m $URL
 )}
 alias g=google
+
+mw() {(
+    URL="http://www.merriam-webster.com/dictionary/simpatico/$@"
+    URL=$(echo "$URL" | sed 's/ /%20/g')
+    w3m $URL
+)}
+
 
 bindver() { dig version.bind txt chaos @"$@" ; }
 ns() { host -t ns $* | sort -n; }
@@ -267,10 +275,21 @@ trackers() {
     done < ~/todo/gtd/notes/trackers | xsel --input --clipboard
 }
 
-update() {(
-    set -x
-    sudo aptitude update && sudo aptitude dist-upgrade
-)}
+if grep -wq Ubuntu /etc/os-release 2>/dev/null
+then
+    # On Ubuntu, use apt-get
+    update() {(
+        set -x
+        sudo apt-get update && sudo apt-get dist-upgrade
+    )}
+elif grep -wq Debian /etc/os-release 2>/dev/null
+then
+    # On Debian, use aptitude
+    update() {(
+        set -x
+        sudo aptitude update && sudo aptitude dist-upgrade
+    )}
+fi
 
 # For setting the vim background to light or dark, depending on what my mood
 # is, and what background color I've selected for my terminal.  I really wish
