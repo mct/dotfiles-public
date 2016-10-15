@@ -35,9 +35,6 @@
 	# "fetch" and then "merge".''
 	autosetupmerge = true
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-
 [include]
 	# Conveniently, git does not complain if this file does not exist
 	path = ~/.gitconfig.private
