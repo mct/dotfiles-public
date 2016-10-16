@@ -95,11 +95,6 @@ export GCC_COLORS=true
 alias 1="vim ~/todo/gtd/next/onesheet"
 alias xanadu=eval\ "vim \"-c ':set tw=74 ai nosi nosm nobk ruler ic bs=2 nobackup'\" ~/todo/xanadu/\$(date +%Y%m%d).gpg"
 alias grep="grep --color=auto"
-alias ls="ls -AF --color=auto --group-directories-first"
-alias ll="ls -l"
-alias lr="find -print0 | xargs -0 -x ls -ld"
-lsc() { ls -C --color=yes --width $(stty size | awk '{print $NF}') "$@" | less -R; }
-lss() { ls -Slr "$@" | less +G; }
 alias jobs='jobs -l'
 alias j=jobs
 alias lpr="lpr -h"
@@ -141,7 +136,6 @@ alias k="tail -F /var/log/kern.log"
 alias sdr="screen -dr"
 alias sdrj="screen -dr -e ^jj"
 alias sdrx="screen -dr -e ^xx"
-alias units="units -v1"
 #alias pi='echo "scale=10; 4*a(1)" | bc -l'
 alias pi='echo "4*a(1)" | bc -l'
 alias spf="host -t txt"
@@ -150,6 +144,21 @@ alias jf="systemd-journalctl -f"
 alias unicode="unicode --color=yes --max=0"
 alias resize='kill -WINCH $$'
 alias screenshot="gnome-screenshot  --delay 1 --remove-border --window"
+alias arin="whois -h whois.arin.net"
+
+# Things that require tweaks for OSX
+if test "$(uname)" != Darwin
+then
+    # Linux
+    alias units="units -v1"
+    alias ls="ls -AF --color=auto --group-directories-first"
+
+    lsc() { ls -C --color=yes --width $(stty size | awk '{print $NF}') "$@" | less -R --quit-if-one-screen; }
+else
+    # OSX
+	alias ls="ls -AFG"
+    lsc() { CLICOLOR_FORCE=yes COLUMNS=$(stty size | awk '{print $NF}') ls -AFGC |less  -R --quit-if-one-screen; }
+fi
 
 m() {
     #set -x
