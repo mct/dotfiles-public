@@ -18,6 +18,8 @@ function IsReply()
     setlocal modelines=0
 endfunction
 
+set modelines=2
+
 "autocmd FileType mail setlocal tw=75 noai nosmartindent noshowmatch nobackup ruler ic bs=2 modelines=0 term=screen
 autocmd FileType mail call IsReply()
 

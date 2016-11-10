@@ -21,10 +21,13 @@ PATH="$PATH:/usr/games"
 PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 
-# OSX readlink() behaves differently
-if test "$(uname)" != Darwin
+if test "$(uname)" == Darwin
 then
-export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s,bin/java,,")
+    # pip on OSX doesn't use ~/.local/bin
+    PATH="$PATH:~/Library/Python/2.7/bin"
+else
+    # OSX readlink behaves differently
+    export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s,bin/java,,")
 fi
 
 #export MAIL=/var/spool/mail/mct  # use the system default
@@ -118,7 +121,6 @@ alias shred="shred -v -u -z"
 alias off="gnome-screensaver-command -l; xset dpms force off"
 alias zzz="dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias NetworkManageManager=nm-connection-editor
-alias open=xdg-open
 alias vim="vim -X"
 alias vimr="vim -r"
 alias weight="vim ~/todo/weight/mct +':$ r !date +\%m/\%d/\%Y\%t'"
@@ -146,13 +148,13 @@ alias resize='kill -WINCH $$'
 alias screenshot="gnome-screenshot  --delay 1 --remove-border --window"
 alias arin="whois -h whois.arin.net"
 
-# Things that require tweaks for OSX
 if test "$(uname)" != Darwin
 then
     # Linux
     alias units="units -v1"
-    alias ls="ls -AF --color=auto --group-directories-first"
+    alias open=xdg-open
 
+    alias ls="ls -AF --color=auto --group-directories-first"
     lsc() { ls -C --color=yes --width $(stty size | awk '{print $NF}') "$@" | less -R --quit-if-one-screen; }
 else
     # OSX
