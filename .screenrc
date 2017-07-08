@@ -25,7 +25,8 @@ termcapinfo xterm 'vb@'
 
 # backtick id lifespan autorefresh cmd args...
 #backtick 1 1 1 acpi | sed 's/Battery//'
-backtick 1 1 1 acpi
+#backtick 1 1 1 acpi
+backtick 1 1 1 true
 
 # format of C-a t
 time "   %C:%s%a   %D %M %d, %Y "
