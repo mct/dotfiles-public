@@ -20,6 +20,7 @@
 	cat = cat-file -p
 	dirname = rev-parse --show-toplevel
 	rem = remote -v
+	wdiff = diff --color-words
 
 [push]
 	# Only push up the current branch, and only if it's already being tracked
