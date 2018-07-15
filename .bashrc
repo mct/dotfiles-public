@@ -147,6 +147,7 @@ alias unicode="unicode --color=yes --max=0"
 alias resize='kill -WINCH $$'
 alias screenshot="gnome-screenshot  --delay 1 --remove-border --window"
 alias arin="whois -h whois.arin.net"
+alias rcpt="swaks -q rcpt -f nobody@netisland.net -t"
 
 if test "$(uname)" != Darwin
 then
@@ -276,7 +277,7 @@ getcert() {(
 )}
 
 k9rm() {(
-    for dir in $(find /home/android/Maildir/ -name cur -o -name new -o -name tmp | grep -vw -e Drafts -e .Notes)
+    for dir in $(find /home/android/Maildir/ -name cur -o -name new -o -name tmp | grep -vw -e Drafts -e .Notes -e .News)
     do
         for file in $dir/*
         do rm -fv $file

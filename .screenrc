@@ -3,7 +3,7 @@ shell -$SHELL
 autodetach on
 nethack on
 vbell off
-#deflogin off
+deflogin off
 bufferfile $HOME/.buf
 #defscrollback 4098
 defscrollback 20480

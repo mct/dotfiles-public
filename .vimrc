@@ -1,21 +1,70 @@
-" vim:set ts=4 sw=4 ai et smarttab:
+" vim:set ts=4 sw=4 ai noet smarttab:
 
 set nocompatible
 function IsReply()
-	if line('$') > 1
-		silent :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
-		silent :%s/^>*\zs\s\+$//e
-	endif
-	setlocal tw=75
-    setlocal fo=tcqw
-    setlocal noai
-    setlocal nosmartindent
-    setlocal noshowmatch
-    setlocal nobackup
-    setlocal ruler
-    setlocal ic
-    setlocal bs=2
-    setlocal modelines=0
+	"call feedkeys("/[^ ]$\n")
+	"call feedkeys("/  *$\n")
+	"call feedkeys("gs")
+
+	noremap gs /[ \t][ \t]*$<c-m>:set hls!<c-m>''
+
+	"call feedkeys("gs")
+	call feedkeys("1G")
+	call feedkeys("}")
+
+	" mutt will strip trailing spaces from the end of $indent_str when
+	" $text_flowed is set.  Replace '>' with '> ', but only the quote
+	" character is not a paragraph break.
+	silent :%s/^>\([^ ]\)/> \1/e
+
+	" Be mindful about removing trailing spaces from portions of messages
+	" I'm quoting.  Otherwise, it will probably wrap badly.  This means that
+	" messages I'm responding to will be word wrapped according to how mutt
+	" displayed it to me, which isn't ideal, but the lesser of bad choices.
+	silent :%s/^\(>.*\) $/\1/e
+
+	"silent :%s/^\(>[> ]*\)  *$/\1/e
+
+	"silent :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
+	"silent :%s/^>*\zs\s\+$//e
+
+	setlocal tw=74
+	setlocal fo=tcqw
+	setlocal noai
+	setlocal nosmartindent
+	setlocal noshowmatch
+	setlocal nobackup
+	setlocal ruler
+	setlocal ic
+	setlocal bs=2
+	setlocal modelines=0
+	"setlocal spell
+
+	"highlight default link Foo String
+
+	" Ideally, we want to ignore lines that start with headers, like:
+	"	From:
+	"	To:
+	"	Cc:
+	"	Bcc:
+	"	Subject:
+	"	Reply-To:
+	"	In-Reply-To:
+
+	syntax on
+	syntax match WrappedLine	/^.* $/
+	syntax match UnWrappedLine	/^[^>].*[^ ]$\n[^>]/
+
+	" First one wins
+	"highlight default link WrappedLine   Comment
+	highlight default link UnWrappedLine String
+
+	" comment	blue
+	highlight default link Foo Keyword
+	highlight default link Foo Operator
+	highlight default link Foo String		" Red
+	highlight default link Foo Identifier	" Light blue
+	highlight default link Foo Statement	" Red
 endfunction
 
 set modelines=2
@@ -407,11 +456,12 @@ set foldtext=SomeFoldText()
 
 set nofsync swapsync=
 
-map gs  :.!strike <c-m>
-vmap gs :!strike <c-m>
-map g-  :s/^/∙ /<c-m>
-map g_  :.!underline <c-m>
-vmap g_ :!underline <c-m>
+"map gs  :.!strike <c-m>
+"vmap gs :!strike <c-m>
+"map g-  :s/^/∙ /<c-m>
+"map g_  :.!underline <c-m>
+"vmap g_ :!underline <c-m>
+
 "set undofile	" an experiment. http://vimdoc.sourceforge.net/htmldoc/undo.html#undo-persistence
 
 " help cmdnline.txt
@@ -429,4 +479,13 @@ cnoremap <Esc><Backspace> <C-w>
 
 noremap gw :w !wc -w<c-m>
 
-source ~/.vim/vimrc-background
+"digraphs -- 8211 " em-dash –
+"digraphs `` 8220 " open quote “
+"digraphs '' 8221 " close quote ”
+"digraphs mu 181  " µ
+
+"imap -mct ~mct
+
+if filereadable($HOME . '/.vim/vimrc-background')
+    source ~/.vim/vimrc-background
+endif
