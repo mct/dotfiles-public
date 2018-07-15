@@ -3,10 +3,13 @@
 
 test -f ~/.bashrc && source ~/.bashrc
 
-stty -ixon
-stty flush ^O
-stty -echoctl
-#eval $(resize)
+if tty -s
+then
+    stty -ixon
+    stty flush ^O
+    stty -echoctl
+    #eval $(resize)
+fi
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
