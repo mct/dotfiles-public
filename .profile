@@ -27,6 +27,7 @@ echo;
 bigboard
 #pom; echo
 screen -ls
+echo
 
 #test -f ~/.agent && . ~/.agent
 #if [ -n "$SSH_AGENT_PID" ] && \

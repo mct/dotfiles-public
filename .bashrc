@@ -131,7 +131,6 @@ alias httpshare="echo; ifconfig | grep -w inet | tr  : ' ' | awk '! / 127.0.0.1 
 alias vim-r="find ~  /tmp /var -name '.sw?' -o -name '.*.sw?' 2>/dev/null"
 alias s="stty -ctlecho"
 alias nl="nl -ba"
-alias mutt=mutt-org
 alias k9mutt="mutt -f ~android/Maildir/"
 alias ipython="ipython --no-confirm-exit"
 alias k="tail -F /var/log/kern.log"
@@ -140,7 +139,6 @@ alias sdrj="screen -dr -e ^jj"
 alias sdrx="screen -dr -e ^xx"
 #alias pi='echo "scale=10; 4*a(1)" | bc -l'
 alias pi='echo "4*a(1)" | bc -l'
-alias spf="host -t txt"
 alias d=dict
 alias jf="systemd-journalctl -f"
 alias unicode="unicode --color=yes --max=0"
@@ -162,11 +160,6 @@ else
 	alias ls="ls -AFG"
     lsc() { CLICOLOR_FORCE=yes COLUMNS=$(stty size | awk '{print $NF}') ls -AFGC |less  -R --quit-if-one-screen; }
 fi
-
-m() {
-    #set -x
-    fetchmail $@ && tail -n0 -F /var/log/mail.log
-}
 
 tag () { 
     vim "+:tag $*"
@@ -199,30 +192,32 @@ google() {(
 )}
 alias g=google
 
-mw() {(
-    URL="http://www.merriam-webster.com/dictionary/simpatico/$@"
-    URL=$(echo "$URL" | sed 's/ /%20/g')
-    w3m $URL
-)}
-
-
 bindver() { dig version.bind txt chaos @"$@" ; }
-ns() { host -t ns $* | sort -n; }
+ns() { host -t ns "$@" | sort -n; }
 
 domain()
 {
-    for i in $*; do for j in $(echo $i | cut -d. -f1).{com,net,org}; do
-        #o=$(dig $j ns +pfmin +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
-        o=$(dig $j ns +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
-        test $o -eq 0 && echo "$j: NO DNS!"
-        echo
-    done; done
+    for i in "$@"; do
+        for j in $(echo $i | cut -d. -f1).{com,net,org}; do
+            #o=$(dig $j ns +pfmin +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
+            #o=$(dig $j ns +aaonly | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
+            o=$(dig $j ns | egrep -v '^;|^ *$' | tee /dev/tty | wc -l)
+            test $o -eq 0 && echo "$j: NO DNS!"
+            echo
+        done
+    done
 }
 
 mx() {(
-    MXHOST=$(echo "$1" | awk -F@ '{print $NF}')
+    H=$(echo "$1" | awk -F@ '{print $NF}')
     shift;
-    host -t mx "$MXHOST" "$@" | sort -n;
+    host -t mx "$H" "$@" | sort -n;
+)}
+
+spf() {(
+    H=$(echo "$1" | awk -F@ '{print $NF}')
+    shift;
+    host -t txt "$H" "$@" | sort -n;
 )}
 
 jdig() {(
@@ -291,19 +286,11 @@ trackers() {
     done < ~/todo/gtd/notes/trackers | xsel --input --clipboard
 }
 
-if grep -wq Ubuntu /etc/os-release 2>/dev/null
+if grep -qw -e Ubuntu -e Debian /etc/os-release 2>/dev/null
 then
-    # On Ubuntu, use apt-get
     update() {(
         set -x
         sudo apt-get update && sudo apt-get dist-upgrade
-    )}
-elif grep -wq Debian /etc/os-release 2>/dev/null
-then
-    # On Debian, use aptitude
-    update() {(
-        set -x
-        sudo aptitude update && sudo aptitude dist-upgrade
     )}
 fi
 
