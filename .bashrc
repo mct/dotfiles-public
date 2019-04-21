@@ -156,6 +156,8 @@ then
 
     alias ls="ls -AF --color=auto --group-directories-first"
     lsc() { ls -C --color=yes --width $(stty size | awk '{print $NF}') "$@" | less -R --quit-if-one-screen; }
+
+    boottime() { date -d "now - $(awk '{print $1}' /proc/uptime) seconds"; }
 else
     # OSX
 	alias ls="ls -AFG"
