@@ -24,6 +24,7 @@ PATH="$PATH:$GOPATH/bin"
 if test "$(uname)" == Darwin
 then
     # pip on OSX doesn't use ~/.local/bin
+    PATH="$PATH:~/Library/Python/3.7/bin"
     PATH="$PATH:~/Library/Python/2.7/bin"
 else
     # OSX readlink behaves differently
@@ -158,7 +159,8 @@ then
 else
     # OSX
 	alias ls="ls -AFG"
-    lsc() { CLICOLOR_FORCE=yes COLUMNS=$(stty size | awk '{print $NF}') ls -AFGC |less  -R --quit-if-one-screen; }
+    #lsc() { CLICOLOR_FORCE=yes COLUMNS=$(stty size | awk '{print $NF}') ls -AFGC |less  -R --quit-if-one-screen; }
+    lsc() { ls -C --color=yes --width $(stty size | awk '{print $NF}') "$@" | less -R --quit-if-one-screen; }
 fi
 
 tag () { 
