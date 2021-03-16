@@ -2,6 +2,7 @@
 # vim:set ts=4 sw=4 et smarttab:
 
 export LC_COLLATE=C
+export LC_TIME=C
 
 export GOROOT=~/golang
 export GOPATH=~/go
@@ -54,7 +55,7 @@ export PYTHONDONTWRITEBYTECODE=1
 
 export GCC_COLORS=true
 
-#export PERL5LIB=/usr/local/pkg/nuvexport-0.3/share/nuvexport
+export PERL5LIB=~/perl5/lib/perl5
 
 #export AWS_AUTO_SCALING_HOME=~/cf/software/aws/autoscaling
 #export AWS_CREDENTIAL_FILE=~/cf/software/aws/etc/credential_file
@@ -97,7 +98,6 @@ export GCC_COLORS=true
 ## export PATH=$PATH:~/analytics/bin
 
 alias 1="vim ~/todo/gtd/next/onesheet"
-alias xanadu=eval\ "vim \"-c ':set tw=74 ai nosi nosm nobk ruler ic bs=2 nobackup'\" ~/todo/xanadu/\$(date +%Y%m%d).gpg"
 alias grep="grep --color=auto"
 alias jobs='jobs -l'
 alias j=jobs
@@ -106,7 +106,7 @@ alias tra="traceroute -I -w2 -q1"
 alias tcptra="tcptraceroute -w 1"
 alias pingscan="nmap -sP"
 alias linebuf="stdbuf --output=L"
-alias unbuf="stdbuf --output=O"
+alias unbuf="stdbuf --output=0"
 alias mosh="mosh --ssh 'ssh -v'"
 alias mvi="mv -i"
 alias noeof="set -o ignoreeof"
@@ -125,8 +125,11 @@ alias NetworkManageManager=nm-connection-editor
 alias vim="vim -X"
 alias vimr="vim -r"
 alias weight="vim ~/todo/weight/mct +':$ r !date +\%m/\%d/\%Y\%t'"
+
 alias u="perl -le 'print scalar localtime \$_ for @ARGV'"
 alias uu="perl -le 'print scalar gmtime \$_ for @ARGV'"
+tl() { date -d "$*" +%s; }
+
 alias objdump="objdump -M intel"
 alias httpshare="echo; ifconfig | grep -w inet | tr  : ' ' | awk '! / 127.0.0.1 / { print \$3 }' ; echo; python -m SimpleHTTPServer"
 alias vim-r="find ~  /tmp /var -name '.sw?' -o -name '.*.sw?' 2>/dev/null"
@@ -189,6 +192,15 @@ gt() {(
     vim ~/todo/gtd/.calendar-data/$(/bin/date +'%Y-%m' -d "$when") +1 "+/$date"
 )}
 
+xanadu() {(
+    set -e
+    when="${*:-now}"
+    test "$when" = "yest" && when=yesterday
+    test "$when" = "y"    && when=yesterday
+    date=$(date +%Y%m%d -d "$when")
+    vim -c ':set tw=77 ai ts=4 sw=4 sts=4 et noshowmatch nosmartindent' ~/todo/xanadu/$date.gpg
+)}
+
 google() {(
     URL="http://www.google.com/search?q=$@"
     URL=$(echo "$URL" | sed 's/ /%20/g')
@@ -221,7 +233,12 @@ mx() {(
 spf() {(
     H=$(echo "$1" | awk -F@ '{print $NF}')
     shift;
-    host -t txt "$H" "$@" | sort -n;
+    host -t txt "$H" "$@"
+)}
+dmarc() {(
+    H=$(echo "$1" | awk -F@ '{print $NF}')
+    shift;
+    dig +short "_dmarc.$H" txt "$@" | sed -e 's/^"//' -e 's/"$//'
 )}
 
 jdig() {(
